@@ -1,0 +1,217 @@
+$color1: #2c3e50;
+$color2: #3498db;
+$color3: #ecf0f1;
+$color4: #e74c3c;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: #f8f9fa;
+}
+
+.header {
+    padding: 20px;
+    text-align: right;
+    background: $color1;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.btn-main {
+    background: $color2;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    
+    &:hover {
+        background: darken($color2, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba($color2, 0.3);
+    }
+
+    i {
+        font-size: 1.2em;
+    }
+}
+
+// ... (pozostałe style pozostają bez zmian) ...
+
+.container {
+    display: flex;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: calc(100vh - 70px);
+
+    &.pokaz-raport {
+        .galeria {
+            width: 30%;
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .raport {
+            width: 70%;
+            transform: translateX(0);
+        }
+    }
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 30px;
+    width: 100%;
+    background: linear-gradient(135deg, $color3 0%, #dfe6e9 100%);
+    transition: all 0.4s ease;
+    transform: translateX(0); // Naprawiona pozycja startowa
+    opacity: 1; // Początkowa widoczność
+}
+
+// ... (reszta styli pozostaje bez zmian) ...
+
+.kafelek {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    flex: 1 1 320px;
+    max-width: 400px;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    
+    @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+            animation-delay: $i * 0.1s;
+        }
+    }
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    &-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid rgba($color1, 0.1);
+
+        i {
+            font-size: 2em;
+            color: $color2;
+        }
+
+        h3 {
+            color: $color1;
+            margin: 0;
+            font-size: 1.4em;
+        }
+    }
+
+    &-content {
+        p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 15px 0;
+            color: lighten($color1, 15%);
+            font-size: 0.95em;
+
+            i {
+                width: 25px;
+                color: $color2;
+                font-size: 1.1em;
+            }
+        }
+    }
+}
+
+.raport {
+    width: 0;
+    background: white;
+    transform: translateX(100%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+}
+
+.powrot-btn {
+    background: $color4;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    margin: 20px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    &:hover {
+        background: darken($color4, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba($color4, 0.3);
+    }
+
+    i {
+        font-size: 1.1em;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .galeria {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .kafelek {
+        flex: 1 1 100%;
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .container.pokaz-raport {
+        flex-direction: column;
+        
+        .galeria,
+        .raport {
+            width: 100% !important;
+        }
+    }
+}
+
+@media print {
+    .galeria, button, .header {
+        display: none !important;
+    }
+
+    .raport {
+        width: 100% !important;
+        transform: none !important;
+    }
+}

@@ -1,0 +1,153 @@
+/* Zmienne */
+$primary-color: #1abc9c; // Jasny turkusowy
+$secondary-color: #e74c3c; // Czerwony
+$text-color: #2c3e50; // Ciemny granatowy
+$background-color: #ecf0f1; // Jasnoszary
+$button-color: #3498db; // Niebieski
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: $background-color;
+    color: $text-color;
+    line-height: 1.6;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: $primary-color;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
+/* Przyciski nawigacyjne */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    a {
+        text-decoration: none;
+        color: white;
+        background-color: $button-color;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: darken($button-color, 10%);
+        }
+    }
+}
+
+.table-container {
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-in-out;
+    margin-bottom: 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    animation: fadeInUp 0.8s forwards;
+
+    h2 {
+        color: $primary-color;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+
+        i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+
+        thead {
+            background-color: $primary-color;
+            color: white;
+
+            th {
+                padding: 12px;
+                text-align: left;
+                font-weight: 500;
+            }
+        }
+
+        tbody {
+            tr {
+                border-bottom: 1px solid #ddd;
+
+                &:hover {
+                    background-color: rgba($primary-color, 0.1);
+                }
+
+                td {
+                    padding: 12px;
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+
+    /* Przyciski dodawania */
+    .action-buttons {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+            background-color: $secondary-color;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: darken($secondary-color, 10%);
+            }
+
+            & + button {
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+/* Animacje */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

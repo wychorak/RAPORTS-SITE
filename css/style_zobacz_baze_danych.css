@@ -1,0 +1,131 @@
+/* Zmienne */
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  line-height: 1.6;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #1abc9c;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+/* Przyciski nawigacyjne */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.nav-buttons a {
+  text-decoration: none;
+  color: white;
+  background-color: #3498db;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+.nav-buttons a:hover {
+  background-color: #217dbb;
+}
+
+.table-container {
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-in-out;
+  margin-bottom: 40px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  animation: fadeInUp 0.8s forwards;
+  /* Przyciski dodawania */
+}
+.table-container h2 {
+  color: #1abc9c;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+.table-container h2 i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.table-container table thead {
+  background-color: #1abc9c;
+  color: white;
+}
+.table-container table thead th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 500;
+}
+.table-container table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+.table-container table tbody tr:hover {
+  background-color: rgba(26, 188, 156, 0.1);
+}
+.table-container table tbody tr td {
+  padding: 12px;
+  font-size: 0.9rem;
+}
+.table-container .action-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.table-container .action-buttons button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.table-container .action-buttons button:hover {
+  background-color: #d62c1a;
+}
+.table-container .action-buttons button + button {
+  margin-left: 10px;
+}
+
+/* Animacje */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}/*# sourceMappingURL=style_zobacz_baze_danych.css.map */
