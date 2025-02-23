@@ -1,11 +1,13 @@
 <?php
-$servername = "localhost";
-$username = "root"; // Zmień na prawdziwe dane
-$password = ""; // Zmień na prawdziwe hasło
-$dbname = "raporty";
+$servername = "serwer2448789.home.pl";
+$username = "38270794_wychor";
+$password = "2T7STsFp*jjtz";
+$dbname = "38270794_wychor";
+$port = 3380;
+
 
 // Utwórz połączenie
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
 
 // Sprawdź połączenie
 if ($conn->connect_error) {

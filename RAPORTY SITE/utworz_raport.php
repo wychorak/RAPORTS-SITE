@@ -7,7 +7,7 @@ if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
 
 // Pobierz listę produktów i klientów
 $produkty = $conn->query("
-    SELECT ID_Prodkutu AS produkt_id, Nazwa AS nazwa, Cena_Retail AS cena_zakupu, Cena AS cena_sprzedazy 
+    SELECT ID_Produktu AS produkt_id, Nazwa AS nazwa, Cena_Retail AS cena_zakupu, Cena AS cena_sprzedazy 
     FROM Produkty
 ");
 
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['produkt_id']) && is_array($_POST['produkt_id'])) {
         foreach ($_POST['produkt_id'] as $index => $produkt_id) {
             $ilosc_produktow = intval($_POST['ilosc_produktow'][$index]);
-            $stmt_produkty = $conn->prepare("INSERT INTO Zamowienia_Produkty (ID_Zamowienia, ID_Prodkutu, Ilosc) VALUES (?, ?, ?)");
+            $stmt_produkty = $conn->prepare("INSERT INTO Zamowienia_Produkty (ID_Zamowienia, ID_Produktu, Ilosc) VALUES (?, ?, ?)");
             if (!$stmt_produkty) {
                 die("Prepare failed: " . $conn->error);
             }

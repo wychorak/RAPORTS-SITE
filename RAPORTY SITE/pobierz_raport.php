@@ -18,7 +18,7 @@ if ($id > 0) {
         FROM Zamowienia z
         JOIN Klienci k ON z.ID_Klienta = k.ID_Klienta
         JOIN Zamowienia_Produkty zp ON z.ID_Zamowienia = zp.ID_Zamowienia
-        JOIN Produkty p ON zp.ID_Prodkutu = p.ID_Prodkutu
+        JOIN Produkty p ON zp.ID_Produktu = p.ID_Produktu
         WHERE z.ID_Zamowienia = $id
         GROUP BY z.ID_Zamowienia
     ")->fetch_assoc();
@@ -27,13 +27,13 @@ if ($id > 0) {
 
     $produkty = $conn->query("
         SELECT 
-            p.ID_Prodkutu AS produkt_id,
+            p.ID_Produktu AS produkt_id,
             p.Nazwa AS nazwa_produktu,
             zp.Ilosc AS ilosc,
             p.Cena_Retail AS cena_zakupu,
             p.Cena AS cena_sprzedazy
         FROM Zamowienia_Produkty zp
-        JOIN Produkty p ON zp.ID_Prodkutu = p.ID_Prodkutu
+        JOIN Produkty p ON zp.ID_Produktu = p.ID_Produktu
         WHERE zp.ID_Zamowienia = $id
     ");
 ?>

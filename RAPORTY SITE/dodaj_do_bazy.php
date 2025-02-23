@@ -1,28 +1,29 @@
 <?php
 // Dodaj_do_bazy.php
 // Połączenie z bazą danych
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "raporty";
+$servername = "serwer2448789.home.pl";
+$username = "38270794_wychor";
+$password = "2T7STsFp*jjtz";
+$dbname = "38270794_wychor";
+$port = "3380";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$mysqli = new mysqli($servername, $username, $password, $dbname, $port);
 
 // Sprawdź połączenie
-if ($conn->connect_error) {
-    die("Błąd połączenia: " . $conn->connect_error);
+if ($mysqli->connect_error) {
+    die("Błąd połączenia: " . $mysqli->connect_error);
 }
 
 // Obsługa formularza klienta
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['client'])) {
-    $stmt = $conn->prepare("INSERT INTO klienci (Imie, Nazwisko, Email, Telefon, Adres) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $mysqli->prepare("INSERT INTO klienci (Imie, Nazwisko, Email, Telefon, Adres) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("sssss", $_POST['imie'], $_POST['nazwisko'], $_POST['email'], $_POST['telefon'], $_POST['adres']);
     $stmt->execute();
 }
 
 // Obsługa formularza produktu
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product'])) {
-    $stmt = $conn->prepare("INSERT INTO produkty (Nazwa, Cena, Opis, Dostepnosc, Cena_Retail) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $mysqli->prepare("INSERT INTO produkty (Nazwa, Cena, Opis, Dostepnosc, Cena_Retail) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("sdsdd", $_POST['nazwa'], $_POST['cena'], $_POST['opis'], $_POST['dostepnosc'], $_POST['cena_retail']);
     $stmt->execute();
 }

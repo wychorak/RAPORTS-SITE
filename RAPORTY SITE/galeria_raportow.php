@@ -1,21 +1,28 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "raporty");
+$conn = new mysqli("serwer2448789.home.pl", "38270794_wychor", "2T7STsFp*jjtz", "38270794_wychor", "3380");
 if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
 
-$zamowienia = $conn->query("
+$sql = "
     SELECT 
         z.ID_Zamowienia AS zamowienie_id,
         z.Data_Zamowienia AS data_zlozenia,
         k.ID_Klienta AS klient_id,
         CONCAT(k.Imie, ' ', k.Nazwisko) AS klient_nazwa,
         SUM(p.Cena * zp.Ilosc) AS cena_zamowienia
-    FROM Zamowienia z
-    JOIN Klienci k ON z.ID_Klienta = k.ID_Klienta
-    JOIN Zamowienia_Produkty zp ON z.ID_Zamowienia = zp.ID_Zamowienia
-    JOIN Produkty p ON zp.ID_Prodkutu = p.ID_Prodkutu
-    GROUP BY z.ID_Zamowienia
+    FROM zamowienia z
+    JOIN klienci k ON z.ID_Klienta = k.ID_Klienta
+    JOIN zamowienia_produkty zp ON z.ID_Zamowienia = zp.ID_Zamowienia
+    JOIN produkty p ON zp.ID_Produktu = p.ID_Produktu
+    GROUP BY z.ID_Zamowienia, z.Data_Zamowienia, k.ID_Klienta, k.Imie, k.Nazwisko
     ORDER BY z.Data_Zamowienia DESC
-");
+";
+
+$zamowienia = $conn->query($sql);
+
+if ($zamowienia === false) {
+    die("Błąd zapytania: " . $conn->error);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pl">

@@ -77,7 +77,7 @@ $conn->close();
             <table>
                 <thead>
                     <tr>
-                        <th>ID_Prodkutu</th>
+                        <th>ID_Produktu</th>
                         <th>Nazwa</th>
                         <th>Cena</th>
                         <th>Opis</th>
@@ -88,7 +88,7 @@ $conn->close();
                 <tbody>
                     <?php while ($row = $produkty->fetch_assoc()): ?>
                         <tr>
-                            <td><?php echo $row['ID_Prodkutu']; ?></td>
+                            <td><?php echo $row['ID_Produktu']; ?></td>
                             <td><?php echo $row['Nazwa']; ?></td>
                             <td><?php echo $row['Cena']; ?></td>
                             <td><?php echo $row['Opis']; ?></td>
@@ -135,7 +135,7 @@ $conn->close();
                 <thead>
                     <tr>
                         <th>ID_Zamowienia</th>
-                        <th>ID_Prodkutu</th>
+                        <th>ID_Produktu</th>
                         <th>Ilosc</th>
                     </tr>
                 </thead>
@@ -143,7 +143,7 @@ $conn->close();
                     <?php while ($row = $zamowienia_produkty->fetch_assoc()): ?>
                         <tr>
                             <td><?php echo $row['ID_Zamowienia']; ?></td>
-                            <td><?php echo $row['ID_Prodkutu']; ?></td>
+                            <td><?php echo $row['ID_Produktu']; ?></td>
                             <td><?php echo $row['Ilosc']; ?></td>
                         </tr>
                     <?php endwhile; ?>
